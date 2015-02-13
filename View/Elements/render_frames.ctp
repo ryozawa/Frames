@@ -48,15 +48,17 @@ foreach ($frames as $frame):
 							<span class="sr-only"><?php echo __('Down frame position'); ?></span>
 						</button>
 
-						<button class="btn btn-default">
-							<span class="glyphicon glyphicon-cog"></span>
-							<span class="sr-only"><?php echo __('Show flame setting'); ?></span>
-						</button>
+						<!-- TODO フレーム設定機能の作成中 -->
+						<a href="<?php echo $this->Html->url('/'. $frame['plugin_key'] . '/block/index/' . $frame['id']);?>"
+						   class="btn btn-default">
+								<span class="glyphicon glyphicon-cog"> </span>
+						</a>
 
 						<button class="btn btn-default" ng-click="delete(<?php echo $frame['id']; ?>)">
 							<span class="glyphicon glyphicon-remove"></span>
 							<span class="sr-only"><?php echo __('Delete frame'); ?></span>
 						</button>
+
 					</div>
 				<?php endif; ?>
 			</div>

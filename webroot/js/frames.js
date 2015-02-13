@@ -36,4 +36,50 @@ NetCommonsApp.controller('FramesController', function($scope, $http, dialogs) {
               });
         });
   };
+
+/*** TODO:フレーム設定機能↓ ***/
+
+  $scope.blocks = [
+    'FAQ A',
+    'FAQ B',
+    'FAQ C',
+    'FAQ D',
+    'よくある質問'
+  ];
+
+  $scope.status = {
+    isopen: false
+  };
+
+  $scope.toggleDropdown = function($event) {
+    $event.preventDefault();
+    $event.stopPropagation();
+    $scope.status.isopen = !$scope.status.isopen;
+  };
+
+  $scope.isPublished = true;
+
+  $scope.isStartDate = false;
+  $scope.isEndDate = false;
+
+  $scope.dateOpen = function($event, type){
+    $event.stopPropagation();
+    if (type === 'start') {
+      $scope.isStartDate = !$scope.isStartDate;
+    } else if (type === 'end') {
+      $scope.isEndDate = !$scope.isEndDate;
+    }
+  }
+
+})
+.config(function(datepickerConfig, datepickerPopupConfig) {
+  angular.extend(datepickerConfig, {
+    formatMonth: 'yyyy / MM',
+    formatDayTitle: 'yyyy / MM',
+    showWeeks: false
+  });
+  angular.extend(datepickerPopupConfig, {
+    datepickerPopup: 'yyyy/MM/dd HH:mm',
+    showButtonBar: false
+  });
 });

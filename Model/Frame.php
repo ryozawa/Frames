@@ -143,4 +143,24 @@ class Frame extends FramesAppModel {
 		}
 	}
 
+/**
+ * get frame
+ *
+ * @throws Exception
+ * @return array
+ */
+	public function getFrame($frameId, $pluginKey) {
+		$options = array(
+			'conditions' => array(
+				'Frame.id' => $frameId,
+				'Frame.plugin_key' => $pluginKey
+			));
+		$frame = $this->find('first', $options);
+		if (! $frame) {
+			throw new NotFoundException();
+		}
+
+		return $frame;
+	}
+
 }
