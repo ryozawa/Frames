@@ -49,7 +49,7 @@ foreach ($frames as $frame):
 						</button>
 
 						<!-- TODO フレーム設定機能の作成中 -->
-						<a href="<?php echo $this->Html->url('/'. $frame['plugin_key'] . '/block/index/' . $frame['id']);?>"
+						<a href="<?php echo $this->Html->url('/'. $frame['plugin_key'] . '/blocks/index/' . $frame['id']);?>"
 						   class="btn btn-default">
 								<span class="glyphicon glyphicon-cog"> </span>
 						</a>

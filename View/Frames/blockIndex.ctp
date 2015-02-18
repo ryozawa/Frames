@@ -1,5 +1,5 @@
 
-<!-- TODO:言語ファイル化 -->
+<!-- TODO:フレーム設定機能↓ -->
 <?php
 	echo $this->Html->script('http://rawgit.com/angular/bower-angular-sanitize/v1.2.25/angular-sanitize.js', false);
 	echo $this->Html->script('http://rawgit.com/m-e-conroy/angular-dialog-service/v5.2.0/src/dialogs.js', false);
@@ -11,39 +11,25 @@
 <div id="nc-frame-container-<?php echo $frameId; ?>"
 	 ng-controller="FramesController">
 
-	<div class="panel panel-default">
-		<div class="panel-heading clearfix">
-			<?php echo $this->element('Frames.setting_header'); ?>
-		</div>
-		<div class="panel-body">
-			<div class="col-md-3">
-				<?php echo $this->element($pluginsName . '.' . $pluginsName . '/frame_menu', array('tab' => 'block')); ?>
+	<div class="col-md-7">
+		<div class="panel panel-default">
+			<div class="panel-heading clearfix">
+
+				<?php echo $this->element('Frames.setting_header'); ?>
+
 			</div>
-			<div class="col-md-9">
+			<div class="panel-body">
+
+				<?php echo $this->element($pluginsName . '.frame_menu', array('tab' => 'block')); ?>
 
 				<p class="text-right">
-					<a  class="btn btn-success"
-						href="<?php echo $this->Html->url('/'. $frame['plugin_key'] . '/'. $frame['plugin_key'] . '/blockEdit/' . $frame['id']);?>">
-							<span class="glyphicon glyphicon-plus"> </span>
+					<a  class="btn btn-sm btn-success"
+						href="<?php echo $this->Html->url('/'. $frame['plugin_key'] . '/blocks/edit/' . $frame['id']);?>">
+						<span class="glyphicon glyphicon-plus"></span>
 					</a>
 				</p>
-				<ul class="list-group">
-					<li class="list-group-item" ng-repeat="block in blocks">
-						<table width="100%" border="0px">
-							<tr>
-								<td width="90%">
-									<span class="dropdown" dropdown on-toggle="toggled(open)">
-										<a href class="dropdown-toggle" dropdown-toggle>{{block}}</a>
-										<?php echo $this->element($pluginsName . '.' . $pluginsName . '/block_menu'); ?>
-									</span>
-								</td>
-								<td align="right">
-									<input type="radio" name="display_block" onClick="confirm('このブロックを表示しますか？');">
-								</td>
-							</tr>
-						</table>
-					</li>
-				</ul>
+
+				<?php echo $this->element($pluginsName . '.Blocks/block_list'); ?>
 
 			</div>
 		</div>

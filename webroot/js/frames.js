@@ -40,27 +40,17 @@ NetCommonsApp.controller('FramesController', function($scope, $http, dialogs) {
 /*** TODO:フレーム設定機能↓ ***/
 
   $scope.blocks = [
-    'FAQ A',
-    'FAQ B',
-    'FAQ C',
-    'FAQ D',
-    'よくある質問'
+    {id: 1, name: 'FAQ_A', create_user: 'user AAA', create_date: '非公開'},
+    {id: 2, name: 'FAQ_B', create_user: 'user BBB', create_date: '公開'},
+    {id: 3, name: 'FAQ_C', create_user: 'user CCC', create_date: '2015/01/03 ～ 2015/02/28'},
+    {id: 4, name: 'FAQ_D', create_user: 'user DDD', create_date: '非公開'},
+    {id: 5, name: 'よくある質問2015年版', create_user: 'user EEE', create_date: '公開'}
   ];
 
-  $scope.status = {
-    isopen: false
-  };
-
-  $scope.toggleDropdown = function($event) {
-    $event.preventDefault();
-    $event.stopPropagation();
-    $scope.status.isopen = !$scope.status.isopen;
-  };
-
   $scope.isPublished = true;
-
   $scope.isStartDate = false;
   $scope.isEndDate = false;
+  $scope.frameType = 'default';
 
   $scope.dateOpen = function($event, type){
     $event.stopPropagation();
@@ -69,8 +59,19 @@ NetCommonsApp.controller('FramesController', function($scope, $http, dialogs) {
     } else if (type === 'end') {
       $scope.isEndDate = !$scope.isEndDate;
     }
-  }
+  };
 
+  $scope.displayBlock = function(blockName){
+    dlg = dialogs.confirm('Confirm', blockName + 'をフレーム表示しますか？');
+  };
+
+  $scope.selectLabel = function(labelType){
+    $scope.frameType = labelType;
+  };
+
+  $scope.deleteBlock = function(blockName){
+    dlg = dialogs.confirm('Confirm', blockName + 'を削除します。よろしいですか？');
+  };
 })
 .config(function(datepickerConfig, datepickerPopupConfig) {
   angular.extend(datepickerConfig, {

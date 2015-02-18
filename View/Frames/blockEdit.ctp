@@ -20,14 +20,23 @@
 			</div>
 			<div class="panel-body">
 
-				<?php echo $this->element($pluginsName . '.frame_menu', array('tab' => 'frame')); ?>
+				<?php echo $this->element($pluginsName . '.frame_menu', array('tab' => 'block')); ?>
+
+				<?php echo $this->element($pluginsName . '.block_menu', array('tab' => 'block')); ?>
 
 				<form novalidate>
 
-					<?php echo $this->element('Frames.form_frame_edit'); ?>
+					<?php echo $this->element($pluginsName . '.Blocks/form_block_edit'); ?>
 
 					<div class="text-center">
-						<button type="submit" class="btn btn-default">決定</button>
+						<a  class="btn btn-default"
+							href="<?php echo $this->Html->url('/'. $frame['plugin_key'] . '/blocks/index/' . $frame['id']);?>">
+							キャンセル
+						</a>
+						<a  class="btn btn-default"
+							href="<?php echo $this->Html->url('/'. $frame['plugin_key'] . '/blocks/index/' . $frame['id']);?>">
+							決定
+						</a>
 					</div>
 				</form>
 			</div>
