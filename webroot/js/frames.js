@@ -39,6 +39,18 @@ NetCommonsApp.controller('FramesController', function($scope, $http, dialogs) {
 
 /*** TODO:フレーム設定機能↓ ***/
 
+
+  $scope.frame = {};
+
+  $scope.frameInit = function(data){
+    $scope.frame = data.frame;
+    $scope.frame.type = 'default';
+  }
+
+  $scope.selectLabel = function(labelType){
+    $scope.frame.type = labelType;
+  };
+
   $scope.blocks = [
     {id: 1, name: 'FAQ_A', create_user: 'user AAA', create_date: '非公開'},
     {id: 2, name: 'FAQ_B', create_user: 'user BBB', create_date: '公開'},
@@ -50,7 +62,6 @@ NetCommonsApp.controller('FramesController', function($scope, $http, dialogs) {
   $scope.isPublished = true;
   $scope.isStartDate = false;
   $scope.isEndDate = false;
-  $scope.frameType = 'default';
 
   $scope.dateOpen = function($event, type){
     $event.stopPropagation();
@@ -65,9 +76,6 @@ NetCommonsApp.controller('FramesController', function($scope, $http, dialogs) {
     dlg = dialogs.confirm('Confirm', blockName + 'をフレーム表示しますか？');
   };
 
-  $scope.selectLabel = function(labelType){
-    $scope.frameType = labelType;
-  };
 
   $scope.deleteBlock = function(blockName){
     dlg = dialogs.confirm('Confirm', blockName + 'を削除します。よろしいですか？');

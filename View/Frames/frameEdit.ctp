@@ -9,7 +9,8 @@
 ?>
 
 <div id="nc-frame-container-<?php echo $frameId; ?>"
-	 ng-controller="FramesController">
+	 ng-controller="FramesController"
+	 ng-init="frameInit(<?php echo h(json_encode($this->viewVars)); ?>)">
 
 	<div class="col-md-7">
 		<div class="panel panel-default">
@@ -22,14 +23,17 @@
 
 				<?php echo $this->element($pluginsName . '.frame_menu', array('tab' => 'frame')); ?>
 
-				<form novalidate>
+				<?php echo $this->Form->create('Faq', array(
+						'name' => 'frameForm',
+						'novalidate' => true,
+					)); ?>
 
 					<?php echo $this->element('Frames.form_frame_edit'); ?>
 
 					<div class="text-center">
 						<button type="submit" class="btn btn-default">決定</button>
 					</div>
-				</form>
+				<?php echo $this->Form->end(); ?>
 			</div>
 		</div>
 	</div>

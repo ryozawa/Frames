@@ -151,6 +151,7 @@ class Frame extends FramesAppModel {
  */
 	public function getFrame($frameId, $pluginKey) {
 		$options = array(
+			'recursive' => -1,
 			'conditions' => array(
 				'Frame.id' => $frameId,
 				'Frame.plugin_key' => $pluginKey
