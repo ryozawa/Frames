@@ -112,4 +112,25 @@ class FramesController extends FramesAppController {
 		}
 	}
 
-}
+/**
+ * edit method
+ *
+ * @param int $frameId frames.id
+ * @return CakeResponse A response object containing the rendered view.
+ */
+	public function edit($frameId = 0) {
+//		$this->_setFrame($this->viewVars['frameId']);
+		if ($this->request->isPost()) {
+			$data = $this->data;
+			$data['Frame']['id'] = $frameId;
+// TODO:Framesテーブルの修正が必要
+unset($data['Frame']['type']);
+			if (! $this->Frame->save($data)) {
+				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+			}
+
+			if (!$this->request->is('ajax')) {
+				$this->redirect($this->request->referer());
+			}
+		}
+	}}

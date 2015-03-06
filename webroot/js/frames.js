@@ -52,16 +52,35 @@ NetCommonsApp.controller('FramesController', function($scope, $http, dialogs) {
   };
 
   $scope.blocks = [
-    {id: 1, name: 'FAQ_A', create_user: 'user AAA', create_date: '非公開'},
-    {id: 2, name: 'FAQ_B', create_user: 'user BBB', create_date: '公開'},
-    {id: 3, name: 'FAQ_C', create_user: 'user CCC', create_date: '2015/01/03 ～ 2015/02/28'},
-    {id: 4, name: 'FAQ_D', create_user: 'user DDD', create_date: '非公開'},
-    {id: 5, name: 'よくある質問2015年版', create_user: 'user EEE', create_date: '公開'}
+    {id: 1, name: 'FAQ_A', isPublished: '非公開', modified: '2015/01/01'},
+    {id: 2, name: 'FAQ_B', isPublished: '公開', modified: '2015/02/01'},
+    {id: 3, name: 'FAQ_C', isPublished: '2015/01/03 ～ 2015/02/28', modified: '2015/01/02'},
+    {id: 4, name: 'FAQ_D', isPublished: '非公開', modified: '2015/03/01'},
+    {id: 5, name: 'よくある質問2015年版', isPublished: '公開', modified: '2015/01/03'}
   ];
 
+  $scope.categories = [
+    {id: 1, name: 'カテゴリA'},
+    {id: 2, name: 'カテゴリB'},
+    {id: 3, name: 'カテゴリC'},
+    {id: 4, name: 'カテゴリD'},
+    {id: 5, name: 'カテゴリE'}
+  ];
+
+
   $scope.isPublished = true;
+  $scope.isPublishedPeriod = false;
   $scope.isStartDate = false;
   $scope.isEndDate = false;
+  $scope.publishedStart = '2015-03-23T15:00:00.000Z';
+
+  $scope.orderByField = 'name';
+  $scope.reverseSort = false;
+
+  $scope.orderBlock = function(name){
+    $scope.orderByField = name;
+    $scope.reverseSort = !$scope.reverseSort;
+  }
 
   $scope.dateOpen = function($event, type){
     $event.stopPropagation();
