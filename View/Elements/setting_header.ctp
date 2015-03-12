@@ -11,15 +11,15 @@
 		'url' => array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit', $frameId),
 	)); ?>
 
-	<input type="text" name="data[Frame][name]" class="form-control" ng-model="frame.name" style="display:inline-block;width:auto">
+	<input type="text" name="data[Frame][name]" class="form-control" ng-model="frame.name" style="display:inline-block;width:auto;">
 
-	<input type="hidden" name="data[Frame][type]" class="form-control" ng-value="frame.type">
+	<input type="hidden" name="data[Frame][header_type]" class="form-control" ng-value="frame.headerType">
 	<div id="display_type" class="btn-group">
 		<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">
-			<div class="panel panel-{{frame.type}}"
+			<div class="panel panel-{{frame.headerType}}"
 				 style="display:inline-block;width:120px;margin-bottom:0;margin-right:auto;margin-left:auto;">
 				<div class="panel-heading" style="padding:0px">
-					<span class="panel-title" ng-bind="frame.type"></span>
+					<span class="panel-title" ng-bind="frame.headerType"></span>
 				</div>
 			</div>
 			<span class="caret"></span>

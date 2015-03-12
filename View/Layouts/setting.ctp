@@ -40,6 +40,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		echo $this->fetch('css');
 		echo $this->fetch('script');
 	?>
+
 </head>
 	<body ng-controller="NetCommons.base">
 
@@ -113,7 +114,7 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
 			<!-- TODO:幅を固定しない＆サイドコンテンツを表示する -->
 			<div class="col-md-6">
-				<div class="panel panel-{{frame.type}}">
+				<div class="panel panel-{{frame.headerType}}">
 					<div class="panel-heading clearfix">
 						<?php echo $this->element('Frames.setting_header'); ?>
 					</div>

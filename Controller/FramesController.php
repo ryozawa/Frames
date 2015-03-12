@@ -119,12 +119,10 @@ class FramesController extends FramesAppController {
  * @return CakeResponse A response object containing the rendered view.
  */
 	public function edit($frameId = 0) {
-//		$this->_setFrame($this->viewVars['frameId']);
+		$this->_setFrame($this->viewVars['frameId']);
 		if ($this->request->isPost()) {
 			$data = $this->data;
 			$data['Frame']['id'] = $frameId;
-// TODO:Framesテーブルの修正が必要
-unset($data['Frame']['type']);
 			if (! $this->Frame->save($data)) {
 				throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 			}
@@ -133,4 +131,31 @@ unset($data['Frame']['type']);
 				$this->redirect($this->request->referer());
 			}
 		}
-	}}
+	}
+
+
+/**
+ * setBlock method
+ *
+ * @param int $frameId frames.id
+ * @param int $blockId blocks.id
+ * @return CakeResponse A response object containing the rendered view.
+ */
+	public function setBlock($frameId, $blockId) {
+
+		if (! $this->request->isPost()) {
+			throw new MethodNotAllowedException();
+		}
+
+		$options = array('recursive' => -1, 'conditions' => array('id' => $frameId));
+		if (! $frame = $this->Frame->find('first', $options)){
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+		}
+
+		$frame['Frame']['block_id'] = $blockId;
+		if (! $this->Frame->save($frame)) {
+			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
+		}
+
+	}
+}
