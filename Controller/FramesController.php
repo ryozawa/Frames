@@ -119,7 +119,6 @@ class FramesController extends FramesAppController {
  * @return CakeResponse A response object containing the rendered view.
  */
 	public function edit($frameId = 0) {
-		$this->_setFrame($this->viewVars['frameId']);
 		if ($this->request->isPost()) {
 			$data = $this->data;
 			$data['Frame']['id'] = $frameId;
