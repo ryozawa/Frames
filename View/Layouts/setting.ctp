@@ -1,6 +1,8 @@
 <?php
 $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework');
 ?>
+<!-- frame setting START -->
+
 <!DOCTYPE html>
 <html lang="en" ng-app="NetCommonsApp">
 	<head>
@@ -140,3 +142,5 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 		<?php //echo $this->element('sql_dump'); ?>
 	</body>
 </html>
+
+<!-- frame setting E N D -->

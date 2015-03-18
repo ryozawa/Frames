@@ -1,3 +1,15 @@
+<?php
+/**
+ * frame setting header element template.
+ *
+ * @copyright Copyright 2014, NetCommons Project
+ * @author Ryo Ozawa <ozawa.ryo@withone.co.jp>
+ * @link http://www.netcommons.org NetCommons Project
+ * @license http://www.netcommons.org/license.txt NetCommons License
+ */
+?>
+<!-- frame setting START -->
+
 <div class="pull-right">
 	<a  class="btn btn-default active" href="#">
 		<span class="glyphicon glyphicon-cog"> </span>
@@ -11,9 +23,26 @@
 		'url' => array('plugin' => 'frames', 'controller' => 'frames', 'action' => 'edit', $frameId),
 	)); ?>
 
-	<input type="text" name="data[Frame][name]" class="form-control" ng-model="frame.name" style="display:inline-block;width:auto;">
+	<?php echo $this->Form->input('Frame.name',
+		array(
+			'type' => 'text',
+			'label' => false,
+			'class' => 'form-control',
+			'error' => false,
+			'div' => false,
+			'style' => 'display:inline-block;width:auto;',
+			'ng-model' => 'frame.name',
+		)); ?>
 
-	<input type="hidden" name="data[Frame][header_type]" class="form-control" ng-value="frame.headerType">
+	<?php echo $this->Form->input('Frame.header_type',
+		array(
+			'type' => 'text',
+			'label' => false,
+			'class' => 'hidden',
+			'div' => false,
+			'ng-value' => 'frame.headerType',
+		)); ?>
+
 	<div id="display_type" class="btn-group">
 		<button type="button" data-toggle="dropdown" class="btn btn-default dropdown-toggle">
 			<div class="panel panel-{{frame.headerType}}"
@@ -25,7 +54,7 @@
 			<span class="caret"></span>
 		</button>
 		<ul role="menu" class="dropdown-menu nc-counter-display-type">
-			<li ng-repeat="labelType in ['default', 'primary', 'info', 'success', 'warning', 'danger']"
+			<li ng-repeat="labelType in labelTypes"
 				ng-click="selectLabel(labelType)">
 				<a href="#">
 					<div class="panel panel-{{labelType}}"
@@ -39,7 +68,10 @@
 		</ul>
 	</div>
 
-	<button type="submit" class="btn btn-default">決定</button>
+	<button type="submit" class="btn btn-default">
+		<?php echo __d('net_commons', 'OK'); ?>
+	</button>
 
-<?php echo $this->Form->end(); ?>
+<!-- frame setting END -->
+<?php echo $this->Form->end();
 

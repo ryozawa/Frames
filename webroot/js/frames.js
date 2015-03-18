@@ -37,16 +37,17 @@ NetCommonsApp.controller('FramesController', function($scope, $http, dialogs) {
         });
   };
 
-/*** TODO:フレーム設定機能↓ ***/
-
+  /* frame setting START */
   $scope.frame = {};
+  $scope.labelTypes = ['default', 'primary', 'info', 'success', 'warning', 'danger'];
 
-  $scope.frameInit = function(data){
+  $scope.frameInit = function(data) {
     $scope.frame = data.frame;
-  }
+  };
 
-  $scope.selectLabel = function(labelType){
+  $scope.selectLabel = function(labelType) {
     $scope.frame.headerType = labelType;
   };
+  /* frame setting E N D */
 
 });

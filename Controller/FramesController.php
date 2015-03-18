@@ -33,7 +33,7 @@ class FramesController extends FramesAppController {
  * @var array
  */
 	public $components = array(
-			//'Security'
+		// 'Security'
 	);
 
 /**
@@ -112,11 +112,14 @@ class FramesController extends FramesAppController {
 		}
 	}
 
+	/* frame setting START */
+
 /**
  * edit method
  *
  * @param int $frameId frames.id
- * @return CakeResponse A response object containing the rendered view.
+ * @return void
+ * @throws InternalErrorException
  */
 	public function edit($frameId = 0) {
 		if ($this->request->isPost()) {
@@ -132,22 +135,22 @@ class FramesController extends FramesAppController {
 		}
 	}
 
-
 /**
  * setBlock method
  *
  * @param int $frameId frames.id
  * @param int $blockId blocks.id
- * @return CakeResponse A response object containing the rendered view.
+ * @return void
+ * @throws MethodNotAllowedException
+ * @throws InternalErrorException
  */
 	public function setBlock($frameId, $blockId) {
-
 		if (! $this->request->isPost()) {
 			throw new MethodNotAllowedException();
 		}
 
 		$options = array('recursive' => -1, 'conditions' => array('id' => $frameId));
-		if (! $frame = $this->Frame->find('first', $options)){
+		if (! $frame = $this->Frame->find('first', $options)) {
 			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 		}
 
@@ -155,6 +158,7 @@ class FramesController extends FramesAppController {
 		if (! $this->Frame->save($frame)) {
 			throw new InternalErrorException(__d('net_commons', 'Internal Server Error'));
 		}
-
 	}
+
+	/* frame setting E N D */
 }

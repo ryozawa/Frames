@@ -143,10 +143,14 @@ class Frame extends FramesAppModel {
 		}
 	}
 
+	/* frame setting START */
+
 /**
  * get frame
  *
- * @throws Exception
+ * @param int $frameId frames.id
+ * @param string $pluginKey plugin key
+ * @throws NotFoundException
  * @return array
  */
 	public function getFrame($frameId, $pluginKey) {
@@ -163,5 +167,7 @@ class Frame extends FramesAppModel {
 
 		return $frame;
 	}
+
+	/* frame setting E N D */
 
 }
